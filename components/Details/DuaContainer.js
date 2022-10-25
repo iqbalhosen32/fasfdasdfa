@@ -28,7 +28,7 @@ const DuaContainer = ({ ruqyah, ns, children }) => {
             <p className="font-inter font-semibold text-lg leading-5 text-title">
               Category: <span className="font-inter font-medium text-lg leading-5 text-title">Dynamic Value</span>
             </p>
-            <div onClick={()=> setIsSetting(!isSetting)} className="flex items-center cursor-pointer">
+            <div onClick={() => setIsSetting(!isSetting)} className="flex items-center cursor-pointer">
               <p className="font-inter font-medium text-sm leading-4 text-mute-grey-200 mr-2.5">All Category</p>
               <Icons height="22px" />
             </div>

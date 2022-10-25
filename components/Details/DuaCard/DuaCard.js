@@ -4,7 +4,7 @@ import DuaBottomBar from "./DuaBottomBar";
 import DuaTopbar from "./DuaTopbar";
 
 const DuaCard = ({ dua }) => {
-  const { language, isArabic, isTranslation, isTransliteration, isRefference } = UseStateContext();
+  const { language, isArabic, isTranslation, isTransliteration, isRefference, translationFont, arabicFont, selectedScript, selectedFont } = UseStateContext();
   const [animation, setAnimation] = useState(false);
 
   useEffect(
@@ -29,7 +29,8 @@ const DuaCard = ({ dua }) => {
                 {/* Arabic */}
 
                 {dua[index].dua_arabic !== null && isArabic && (
-                  <p className=" my-5 text-title text-right leading-loose font-kgfq text-3xl">{dua[index].dua_arabic}</p>
+                  <p style={{ fontSize: `${arabicFont}px` }} className=" my-5 text-title text-right leading-loose font-kgfq text-3xl">{selectedScript === "KGFQ" && dua[index].dua_arabic} {selectedScript === "Noor e Huda" && dua[index].clean_arabic
+                  } {selectedScript === "Noor E Hedayet" && dua[index].dua_indopak}</p>
                 )}
                 {/* transliteration_en */}
 
@@ -39,7 +40,7 @@ const DuaCard = ({ dua }) => {
 
                 {/* translation_en */}
                 {(dua[index].translation_en || dua[index].translation_en) !== null && isTranslation && (
-                  <p className=" my-5 text-title text-justify font-inter font-normal">{language === 'bn' ? dua[index].translation_bn : dua[index].translation_en}</p>
+                  <p style={{ fontSize: `${translationFont}px` }} className=" my-5 text-title text-justify font-inter font-normal">{language === 'bn' ? dua[index].translation_bn : dua[index].translation_en}</p>
                 )}
 
                 {/* Dua Bottom Section */}

@@ -6,8 +6,10 @@ import FontSettings from "./Sidebar/Settings/FontSettings";
 import AppearanceSettings from "./Sidebar/Settings/AppearanceSettings";
 import { useDispatch, useSelector } from "react-redux";
 import { ScriptDropdown } from "../../dataStore/feature/GlobalDataSlicer";
+import { UseStateContext } from "../../context/StateContext";
 
 function RightBar() {
+  const { language } = UseStateContext();
   const scriptDropdown = useSelector((state) => state.globalData.scriptDropdown);
   const dispatch = useDispatch();
 
@@ -45,7 +47,7 @@ function RightBar() {
           sm:pt-4
           
           `}>
-          Settings
+          {language === 'bn' ? 'সেটিংস' : 'Settings'}
         </div>
 
         <div className="xs:pb-2">
@@ -53,21 +55,21 @@ function RightBar() {
             active={dropdown === 1 ? true : false}
             onClick={() => handleDropdown(1)}
 
-            text="Language Settings"
+            text={language === 'bn' ? "ভাষা সেটিংস" : "Language Settings"}
             child={dropdown === 1 && <LanguageSettings />}
           />
           <CatList
             active={dropdown === 2 ? true : false}
             onClick={() => handleDropdown(2)}
 
-            text="General Settings"
+            text={language === 'bn' ? "সাধারণ সেটিংস" : "General Settings"}
             child={dropdown === 2 && <GeneralSettings />}
           />
           <CatList
             active={dropdown === 3 ? true : false}
             onClick={() => handleDropdown(3)}
 
-            text="Font Settings"
+            text={language === 'bn' ? "ফন্ট সেটিংস" : "Font Settings"}
             child={dropdown === 3 && <FontSettings scriptDropdown={scriptDropdown} />}
           />
 

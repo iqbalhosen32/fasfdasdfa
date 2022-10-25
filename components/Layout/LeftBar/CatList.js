@@ -10,9 +10,8 @@ function CatList({ path, text }) {
       <motion.div
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.8 }}
-        className={`${text === "" ? "justify-center items-center" : " "} ${
-          isActive(path) ? "dark:bg-[#314A66]" : ""
-        } cursor-pointer my-2 flex flex-row w-auto  group`}>
+        className={`${text === "" ? "justify-center items-center" : " "} ${isActive(path) ? "dark:bg-[#314A66]" : ""
+          } cursor-pointer my-2 flex flex-row w-auto  group`}>
         <div className={`${isActive(path) ? "" : ""} w-1  `}></div>
         <div className="p-2 flex flex-row items-center">
           <div className={`${text === "" ? "" : "mr-5"}   flex p-2  items-center h-10 w-10 justify-center`}></div>

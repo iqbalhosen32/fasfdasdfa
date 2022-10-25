@@ -8,7 +8,7 @@ import { UseStateContext } from "../../context/StateContext";
 const CatList = () => {
   const data = useSelector((state) => state.duaCat.data);
   const [duaCategory, setDuaCategory] = useState([]);
-  const { language, setLanguage } = UseStateContext();
+  const { language } = UseStateContext();
 
   useEffect(() => {
     localStorageFnc(data, "duaCategory", setDuaCategory);

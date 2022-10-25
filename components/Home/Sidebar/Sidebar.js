@@ -5,7 +5,9 @@ import GeneralSettings from "./Settings/GeneralSettings";
 import FontSettings from "./Settings/FontSettings";
 import AppearanceSettings from "./Settings/AppearanceSettings";
 
+
 function Sidebar({ ns, tab }) {
+
   const [dropdown, setDropdown] = useState(1);
 
   function handleDropdown(id) {

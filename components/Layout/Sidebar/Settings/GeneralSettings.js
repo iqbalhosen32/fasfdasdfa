@@ -3,7 +3,7 @@ import { UseStateContext } from '../../../../context/StateContext';
 import { generalSettings } from "../../../../dataStore/dummy";
 
 const GeneralSettings = () => {
-  const { isArabic, isTranslation, isTransliteration, isRefference, onSetArabic, onSetTranslation, onSetTransliteration, onSetRefference } = UseStateContext();
+  const { language, isArabic, isTranslation, isTransliteration, isRefference, onSetArabic, onSetTranslation, onSetTransliteration, onSetRefference } = UseStateContext();
 
 
 
@@ -22,10 +22,10 @@ const GeneralSettings = () => {
   return (
     <div className="flex flex-col py-2 px-4  animate-scale-down">
 
-      <CheckboxList onClick={() => onSetArabic(!isArabic)} state={isArabic} name="Show Arabic" />
-      <CheckboxList onClick={() => onSetTranslation(!isTranslation)} state={isTranslation} name="Show Translation" />
-      <CheckboxList onClick={() => onSetTransliteration(!isTransliteration)} state={isTransliteration} name="Show Transliteration" />
-      <CheckboxList onClick={() => onSetRefference(!isRefference)} state={isRefference} name="Show Refference" />
+      <CheckboxList onClick={() => onSetArabic(!isArabic)} state={isArabic} name={language === 'bn' ? "আরবি দেখুন" : "Show Arabic"} />
+      <CheckboxList onClick={() => onSetTranslation(!isTranslation)} state={isTranslation} name={language === 'bn' ? "অনুবাদ দেখুন" : "Show Translation"} />
+      <CheckboxList onClick={() => onSetTransliteration(!isTransliteration)} state={isTransliteration} name={language === 'bn' ? "উচ্চারণ দেখুন" : "Show Transliteration"} />
+      <CheckboxList onClick={() => onSetRefference(!isRefference)} state={isRefference} name={language === 'bn' ? "রেফারেন্স দেখুন" : "Show Refference"} />
     </div>
   );
 };
