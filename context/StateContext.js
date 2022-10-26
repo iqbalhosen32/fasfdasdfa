@@ -52,9 +52,10 @@ export const StateContext = ({ children }) => {
 
         //all dua 
         axios.get(PUrls.duaSubCategory).then((response) => {
+            // const result = response.data.result.sort((a,b) => a.subcat_name_en.localeCompare(b.subcat_name_en))
             const result = response.data.result;
-            console.log(result)
-            setSubCategory(response.data);
+            // console.log(result)
+            setSubCategory(result);
         });
     }, [])
 
