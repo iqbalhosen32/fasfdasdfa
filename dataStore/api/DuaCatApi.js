@@ -3,13 +3,17 @@ import axios from "axios";
 
 import { store } from "../store";
 import { setLoading, setData } from "../feature/DuaCatSlicer";
+import { useEffect } from 'react';
+
 export default class DuaCatApi {
   static getCategory = async () => {
+
     const data = await axios.get(PUrls.duaCategory);
+    // console.log()
     try {
       store.dispatch(setLoading());
       const res = await axios.get(PUrls.duaCategory);
       store.dispatch(setData(res.data));
-    } catch (_) {}
+    } catch (_) { }
   };
 }

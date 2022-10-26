@@ -2,18 +2,30 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     loading: false,
-    subCatDua: undefined,
+    data: undefined,
 }
 
 export const duaSlicer = createSlice({
     name: 'duaController',
+    // initialState,
+    // reducers: {
+    //     getSubCatDua: (state, action) => {
+    //         state.subCatDua = action.payload;
+    //     },
+
+
+    // },
+
     initialState,
     reducers: {
-        getSubCatDua: (state, action) => {
-            state.subCatDua = action.payload;
+        setLoading: (state) => {
+            state.loading = !state.loading;
+
         },
-
-
+        setData: (state, action) => {
+            state.data = action.payload
+            console.log(state.data)
+        },
     },
 })
 

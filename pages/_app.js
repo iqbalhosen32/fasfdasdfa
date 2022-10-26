@@ -8,13 +8,13 @@ import { StateContext } from '../context/StateContext'
 
 function App({ Component, pageProps }) {
   return (
-    <StateContext>
-      <Provider store={store}>
+    <Provider store={store}>
+      <StateContext>
         <ThemeProvider attribute="class" defaultTheme="light" disableTransitionOnChange>
           <Component {...pageProps} />
         </ThemeProvider>
-      </Provider>
-    </StateContext>
+      </StateContext>
+    </Provider>
   );
 }
 

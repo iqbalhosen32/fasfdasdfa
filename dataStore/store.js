@@ -11,7 +11,7 @@ import DuaDailySlicer from './feature/DuaDailySlicer';
 import DuaSlicer from './feature/DuaSlicer';
 import BookDetailsSlicer from './feature/BookDetailsSlicer';
 import SearchSlicer from './feature/SearchSlicer';
-import GlobalDataSlicer  from './feature/GlobalDataSlicer';
+import GlobalDataSlicer from './feature/GlobalDataSlicer';
 
 export const store = configureStore({
     reducer: {

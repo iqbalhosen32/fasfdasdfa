@@ -11,6 +11,7 @@ export const duaCatSlicer = createSlice({
     reducers: {
         setLoading: (state) => {
             state.loading = !state.loading;
+
         },
         setData: (state, action) => {
             state.data = action.payload
@@ -19,5 +20,7 @@ export const duaCatSlicer = createSlice({
 })
 
 export const { setLoading, setData } = duaCatSlicer.actions
+// console.log(duaCatSlicer.actions)
+
 
 export default duaCatSlicer.reducer

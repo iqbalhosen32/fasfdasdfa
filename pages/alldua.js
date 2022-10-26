@@ -4,9 +4,14 @@ import DuaPopup from "../components/Modal/DuaPopup/DuaPopup";
 import "rodal/lib/rodal.css";
 import React, { useState } from "react";
 import NumCard from "../components/Utils/NumCard";
+import { UseStateContext } from "../context/StateContext";
 
-const AllDua = () => {
+const AllDua = (props) => {
   const [modalShow, setModalShow] = useState(false);
+  const { subCategory } = UseStateContext();
+  // console.log(subCategory.result)
+
+
   return (
     <Master title={"All Dua"}>
       <div
@@ -28,7 +33,9 @@ const AllDua = () => {
         md:gap-x-4
         lg:grid-cols-2
         lg:gap-x-4">
-            <NumCard link={"/#"} title="A dhikir which is light on tongue, a dhikir which is light on tongue," text="A" />
+            {
+              subCategory.result?.map((item, index) => <NumCard key={index} link={"/#"} title={item.subcat_name_en?.split('').map((item, index) => item)} text="A" />)
+            }
             <NumCard link={"/#"} title="About Lailatul Qadr" text="A" />
             <NumCard link={"/#"} title="About meeting #1" text="A" />
             <NumCard link={"/#"} title="A dua of the treasures of Paradise" text="A" />

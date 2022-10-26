@@ -1,4 +1,10 @@
+import axios from "axios";
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { useSelector } from 'react-redux';
+import PUrls from "../dataStore/api/urls";
+import localStorageFnc from './../dataStore/functions/localStorageFnc';
+
+const baseURL = "https://dua-backend.herokuapp.com/dua-main/sub-category";
 
 const Context = createContext();
 
@@ -13,6 +19,7 @@ export const StateContext = ({ children }) => {
     const [selectedScript, setSelectedScript] = useState("KGFQ");
     const [selectedFont, setSelectedFont] = useState("KGFQ");
 
+    const [subCategory, setSubCategory] = useState([]);
 
     const setMode = (e) => {
         setLanguage(e);
@@ -21,6 +28,7 @@ export const StateContext = ({ children }) => {
     };
 
     useEffect(() => {
+
         //Language Settings
         setLanguage(localStorage.getItem('languageMode') === null ? localStorage.setItem('languageMode', "en") : localStorage.getItem('languageMode'))
 
@@ -41,7 +49,16 @@ export const StateContext = ({ children }) => {
         setTranslationFont(!localStorage.getItem('translationFont') ? localStorage.setItem('translationFont', 16) : localStorage.getItem('translationFont'))
 
         setArabicFont(!localStorage.getItem('arabicFont') ? localStorage.setItem('arabicFont', 20) : localStorage.getItem('arabicFont'))
+
+        //all dua 
+        axios.get(PUrls.duaSubCategory).then((response) => {
+            const result = response.data.result;
+            console.log(result)
+            setSubCategory(response.data);
+        });
     }, [])
+
+    if (!subCategory) return null;
 
     const setScriptMode = (e) => {
         setSelectedScript(e);
@@ -113,6 +130,7 @@ export const StateContext = ({ children }) => {
                 setScriptMode,
                 selectedFont,
                 setFontMode,
+                subCategory,
 
             }}
         >
