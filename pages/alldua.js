@@ -82,14 +82,21 @@ const AllDua = (props) => {
         <div>
           {
             newArray.map(([key, values]) => {
+              // console.log(key)
               return (
                 <div>
-                  <p className=" h-11 w-11 bg-blue-400 text-black text-lg flex justify-center items-center mt-5 ">{key}</p>
-                  {
-                    values.map((item, index) => {
-                      return (
-                        <div key={index} className="grid grid-cols-3 my-8 gap-x-7 gap-y-4 xs:grid-cols-1 xs:gap-y-3 xs:m-0 xs:mt-4 sm:grid-cols-1 sm:gap-x-4 md:grid-cols-2 md:gap-x-4 lg:grid-cols-2 lg:gap-x-4">
-                          <Link href="">
+                  <button
+                    type="button"
+                    onClick={() => setModalShow(true)}
+                    className="text-black bg-blue-400 font-medium leading-tight uppercase  transition duration-150 ease-in-out  h-11 w-11   text-lg flex justify-center items-center xs:mt-0 md:mt-5 lg:mt-5">
+                    {key}
+                  </button>
+                  <div className="grid grid-cols-3 my-8 gap-x-7 gap-y-4 xs:grid-cols-1 xs:gap-y-3 xs:m-0 xs:mt-4 sm:grid-cols-1 sm:gap-x-4 md:grid-cols-2 md:gap-x-4 lg:grid-cols-2 lg:gap-x-4">
+
+                    {
+                      values.map((item, index) => {
+                        return (
+                          <Link key={index} href="">
                             <div className="group">
                               <div className="bg-red-100 flex items-center w-full h-22  pr-4 cursor-pointer  drop-shadow-[0_4px_15px_rgba(0,0,0,0.05)] transition duration-100 delay-100 dark:bg-[#223449]">
                                 <div className={` flex justify-center  items-center h-15 w-15 mx-2.5 transition duration-100 delay-100  dark:bg-[#2c425a]`}>
@@ -101,16 +108,20 @@ const AllDua = (props) => {
                               </div>
                             </div>
                           </Link>
-                        </div>
-                      )
-                    })
-                  }
+                        )
+                      })
+                    }
+                  </div>
+
                 </div>
+
+
+
               )
             })
           }
-        </div>
 
+        </div>
         <Rodal
           showCloseButton={false}
           width={700}
@@ -118,10 +129,11 @@ const AllDua = (props) => {
           customStyles={{ backgroundColor: "transparent", borderRadious: "none", boxShadow: "none" }}
           visible={modalShow}
           onClose={() => setModalShow(false)}>
-          <DuaPopup onClose={() => setModalShow(false)} />
+          <DuaPopup alpaData={newArray} onClose={() => setModalShow(false)} />
         </Rodal>
+
       </div>
-    </Master>
+    </Master >
   );
 };
 

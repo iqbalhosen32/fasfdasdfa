@@ -1,45 +1,15 @@
 import React from "react";
 import PouUpAlpha from "./PouUpAlpha";
 
-function PopUpContent() {
+function PopUpContent(props) {
   return (
     <div className="">
       <div className="mt-4 mb-4 flex justify-center">
-        <PouUpAlpha alpha={"A"} />
-        <PouUpAlpha alpha={"A"} />
-        <PouUpAlpha alpha={"A"} />
-        <PouUpAlpha alpha={"A"} />
-        <PouUpAlpha alpha={"A"} />
+        {
+          props.alpaData?.map(([item, index]) => <PouUpAlpha alpa={item} />)
+        }
       </div>
-      <div className="mt-4 mb-4 flex justify-center">
-        <PouUpAlpha alpha={"A"} />
-        <PouUpAlpha alpha={"A"} />
-        <PouUpAlpha alpha={"A"} />
-        <PouUpAlpha alpha={"A"} />
-        <PouUpAlpha alpha={"A"} />
-      </div>
-      <div className="mt-4 mb-4 flex justify-center">
-        <PouUpAlpha alpha={"A"} />
-        <PouUpAlpha alpha={"A"} />
-        <PouUpAlpha alpha={"A"} />
-        <PouUpAlpha alpha={"A"} />
-        <PouUpAlpha alpha={"A"} />
-      </div>
-      <div className="mt-4 mb-4 flex justify-center">
-        <PouUpAlpha alpha={"A"} />
-        <PouUpAlpha alpha={"A"} />
-        <PouUpAlpha alpha={"A"} />
-        <PouUpAlpha alpha={"A"} />
-        <PouUpAlpha alpha={"A"} />
-      </div>
-      <div className="mt-4 mb-4 flex justify-center">
-        <PouUpAlpha alpha={"A"} />
-        <PouUpAlpha alpha={"A"} />
-        <PouUpAlpha alpha={"A"} />
-        <PouUpAlpha alpha={"A"} />
-        <PouUpAlpha alpha={"A"} />
-      </div>
-      
+
     </div>
   );
 }
