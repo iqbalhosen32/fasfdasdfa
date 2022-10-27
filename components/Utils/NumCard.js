@@ -12,11 +12,6 @@ function NumCard({ link, text, title }) {
           </div>
           <p className="font-inter text-left text-title text-sm lg:text-base w-[80%] font-semibold transition duration-100 delay-100 ">
             {title}
-            {/* {
-              title?.split('').map((item, index) => {
-                return <p>{item[0]}</p>
-              })
-            } */}
           </p>
         </div>
       </div>
