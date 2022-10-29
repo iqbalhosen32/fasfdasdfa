@@ -20,7 +20,6 @@ export const duaCatSlicer = createSlice({
 })
 
 export const { setLoading, setData } = duaCatSlicer.actions
-// console.log(duaCatSlicer.actions)
 
 
 export default duaCatSlicer.reducer

@@ -2,7 +2,6 @@ import Link from "next/link";
 import React from "react";
 
 function NumCard({ link, text, title }) {
-  // console.log(title)
   return (
     <Link href={link}>
       <div className="group">

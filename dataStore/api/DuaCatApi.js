@@ -9,7 +9,6 @@ export default class DuaCatApi {
   static getCategory = async () => {
 
     const data = await axios.get(PUrls.duaCategory);
-    // console.log()
     try {
       store.dispatch(setLoading());
       const res = await axios.get(PUrls.duaCategory);

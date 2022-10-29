@@ -1,8 +1,17 @@
 import axios from "axios";
 import React, { createContext, useContext, useState, useEffect } from "react";
 import PUrls from "../dataStore/api/urls";
+import localStorageFnc from "../dataStore/functions/localStorageFnc";
 
 const Context = createContext();
+
+const Subject = [
+    { name: "Feature Request" },
+    { name: "Bug Report" },
+    { name: "Pertnership/Collaboration" },
+    { name: "Volunteering" },
+    { name: "Other" },
+];
 
 export const StateContext = ({ children }) => {
     const [language, setLanguage] = useState('');
@@ -16,6 +25,9 @@ export const StateContext = ({ children }) => {
     const [selectedFont, setSelectedFont] = useState("KGFQ");
 
     const [subCategory, setSubCategory] = useState([]);
+
+    const [subject, setSubject] = useState();
+
 
     const setMode = (e) => {
         setLanguage(e);
@@ -51,9 +63,20 @@ export const StateContext = ({ children }) => {
             const result = response.data.result;
             setSubCategory(result);
         });
+
+        // setSubject(localStorage.getItem('subject') === null ? localStorage.setItem('subject', JSON.stringify(Subject)) : localStorage.getItem(('subject')))
+
+
+        localStorageFnc(Subject, "subject", setSubject);
+
     }, [])
 
     if (!subCategory) return null;
+
+    // console.log(subject)
+
+
+
 
     const setScriptMode = (e) => {
         setSelectedScript(e);
