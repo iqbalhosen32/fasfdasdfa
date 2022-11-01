@@ -57,7 +57,7 @@ export const bangla = [
 
 export const leftBarEN = [
     {
-        path: '',
+        path: '/',
         text: 'Home',
     },
     {
@@ -81,7 +81,7 @@ export const leftBarEN = [
 
 export const leftBarBN = [
     {
-        path: '',
+        path: '/',
         text: 'হোম',
     },
     {

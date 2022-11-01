@@ -1,11 +1,11 @@
 import Botombar from "./Botombar";
 import TopBar from "./TopBar";
 
-const DetailsCard = () => {
+const DetailsCard = ({ dua }) => {
   return (
     <div className="bg-red-100 rounded-2lg mb-5 dark:bg-[#223449]">
       <div className="p-6">
-        <TopBar />
+        <TopBar dua={dua} />
         <div className="flex flex-col justify-start items-start">
           {/* Body */}
           <p className="my-5 text-title text-justify font-inter font-normal ">

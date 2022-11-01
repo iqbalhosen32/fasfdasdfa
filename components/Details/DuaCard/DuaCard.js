@@ -16,6 +16,8 @@ const DuaCard = ({ dua }) => {
     [dua[0].dua_id]
   );
 
+  // console.log(dua[0])
+
   return (
     <div id={`${dua[0].dua_id}`} className="bg-red-100 rounded-2lg my-5 dark:bg-[#223449]">
       <div className="p-6">
@@ -59,7 +61,7 @@ const DuaCard = ({ dua }) => {
           ) : ""}
         </div>
       </div>
-      <DuaBottomBar audio={dua[0].audio} />
+      <DuaBottomBar duaData={dua[0]} audio={dua[0].audio} />
     </div>
   );
 };

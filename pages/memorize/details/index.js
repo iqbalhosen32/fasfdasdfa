@@ -1,7 +1,10 @@
 import Master from "../../../components/Layout/Master";
 import MemorizeDetails from "../../../components/Memorize/Details/DetailsCard";
+import { UseStateContext } from "../../../context/StateContext";
 
 const MyApp = () => {
+  const { subject } = UseStateContext();
+  console.log(subject)
   return (
     <Master>
       <div className="scrl h-[calc(100vh_-_100px)] 
@@ -12,8 +15,13 @@ const MyApp = () => {
       xl:pb-16
       2xl:pb-16
       3xl:pb-16">
-        <MemorizeDetails />
-        <MemorizeDetails />
+        {
+          subject?.map((item, index) => {
+            return (
+              <MemorizeDetails key={index} dua={item.dua} />
+            )
+          })
+        }
       </div>
     </Master>
   );

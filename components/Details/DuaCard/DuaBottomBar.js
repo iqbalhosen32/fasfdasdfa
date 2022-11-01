@@ -8,6 +8,7 @@ import Rodal from "rodal";
 import "rodal/lib/rodal.css";
 
 const DuaBottomBar = (props) => {
+  // console.log(props.duaData)
   const [bookmarkShow, setBookmark] = useState(false);
   const [planShow, setPlanShow] = useState(false);
   const [shareShow, setShareShow] = useState(false);
@@ -75,7 +76,7 @@ const DuaBottomBar = (props) => {
         customStyles={{ backgroundColor: "transparent", boxShadow: "none" }}
         visible={planShow}
         onClose={() => setPlanShow(false)}>
-        <PlanPopup onClose={() => setPlanShow(false)} />
+        <PlanPopup duaData={props.duaData} onClose={() => setPlanShow(false)} />
       </Rodal>
       <Rodal
         showCloseButton={false}

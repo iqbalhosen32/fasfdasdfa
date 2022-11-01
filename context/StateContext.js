@@ -6,11 +6,7 @@ import localStorageFnc from "../dataStore/functions/localStorageFnc";
 const Context = createContext();
 
 const Subject = [
-    { name: "Feature Request" },
-    { name: "Bug Report" },
-    { name: "Pertnership/Collaboration" },
-    { name: "Volunteering" },
-    { name: "Other" },
+    { name: "Favorite" },
 ];
 
 export const StateContext = ({ children }) => {
@@ -27,6 +23,12 @@ export const StateContext = ({ children }) => {
     const [subCategory, setSubCategory] = useState([]);
 
     const [subject, setSubject] = useState();
+
+    const [folder, setFolder] = useState();
+
+    const newFolder = (e) => {
+        setFolder(e.target.value)
+    }
 
 
     const setMode = (e) => {
@@ -64,10 +66,10 @@ export const StateContext = ({ children }) => {
             setSubCategory(result);
         });
 
-        // setSubject(localStorage.getItem('subject') === null ? localStorage.setItem('subject', JSON.stringify(Subject)) : localStorage.getItem(('subject')))
+        setSubject(localStorage.getItem('subject') === null ? localStorage.setItem('subject', JSON.stringify(Subject)) : JSON.parse(localStorage.getItem('subject')))
 
 
-        localStorageFnc(Subject, "subject", setSubject);
+        // localStorageFnc(Subject, "subject", setSubject);
 
     }, [])
 
@@ -75,7 +77,11 @@ export const StateContext = ({ children }) => {
 
     // console.log(subject)
 
-
+    const handleSave = (duaData) => {
+        // setSaveFolder(folder)
+        const newData = [...subject, { name: folder, dua: duaData }]
+        localStorage.setItem('subject', JSON.stringify(newData))
+    }
 
 
     const setScriptMode = (e) => {
@@ -149,6 +155,10 @@ export const StateContext = ({ children }) => {
                 selectedFont,
                 setFontMode,
                 subCategory,
+                subject,
+                setSubject,
+                newFolder,
+                handleSave,
 
             }}
         >

@@ -12,7 +12,7 @@ const Card = (props) => {
     <div className="bg-red-100 w-full max-h-max  p-5 border-[.5px] border-solid border-devider dark:bg-[#223449] dark:border-none animate-fade-in-up">
       <div className=" flex justify-between items-center">
         <Link href="/memorize/details">
-          <p className="cursor-pointer font-inter text-left font-semibold text-md text-[#373737] sm:text-base ">Title bar</p>
+          <p className="cursor-pointer font-inter text-left font-semibold text-md text-[#373737] sm:text-base ">{props.title}</p>
         </Link>
         <button
           onClick={() => setModalShow(true)}

@@ -1,7 +1,10 @@
 import Master from "../../components/Layout/Master";
 import Card from "../../components/Memorize/Card";
+import { UseStateContext } from "../../context/StateContext";
 
 const MyApp = () => {
+  const { subject } = UseStateContext();
+
   return (
     <Master>
       <div className="scrl h-[calc(100vh_-_80px)] md:pt-24 lg:pt-24">
@@ -15,13 +18,19 @@ const MyApp = () => {
         xl:grid-cols-3 xl:pb-16
         2xl:grid-cols-3 2xl:pb-16
         3xl:grid-cols-3 3xl:pb-16">
+          {
+            subject?.map((item, index) => {
+              return (
+                <Card key={index} title={item.name} duaData={item.dua} selected="3" remaining="5" completed="2/3" percentage={"75%"} />
+              )
+            })
+          }
+          {/* <Card selected="3" remaining="5" completed="2/3" percentage={"100%"} />
           <Card selected="3" remaining="5" completed="2/3" percentage={"75%"} />
-          <Card selected="3" remaining="5" completed="2/3" percentage={"100%"} />
           <Card selected="3" remaining="5" completed="2/3" percentage={"75%"} />
           <Card selected="3" remaining="5" completed="2/3" percentage={"75%"} />
           <Card selected="3" remaining="5" completed="2/3" percentage={"75%"} />
-          <Card selected="3" remaining="5" completed="2/3" percentage={"75%"} />
-          <Card selected="3" remaining="5" completed="2/3" percentage={"75%"} />
+          <Card selected="3" remaining="5" completed="2/3" percentage={"75%"} /> */}
         </div>
       </div>
     </Master>

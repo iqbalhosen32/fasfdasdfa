@@ -1,15 +1,10 @@
 import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
+import { UseStateContext } from "../../../context/StateContext";
 
-const subject = [
-  { name: "Feature Request" },
-  { name: "Bug Report" },
-  { name: "Pertnership/Collaboration" },
-  { name: "Volunteering" },
-  { name: "Other" },
-];
 
 export default function SelectOption({ title }) {
+  const { subject } = UseStateContext();
   const [selected, setSelected] = useState(subject[0]);
 
   return (
