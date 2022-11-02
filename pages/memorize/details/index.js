@@ -18,8 +18,12 @@ const MyApp = () => {
         {
           subject?.map((item, index) => {
             return (
-              <MemorizeDetails key={index} dua={item.dua} />
-            )
+              item.dua?.map((item, index) => {
+                console.log(item)
+                return (
+                  <MemorizeDetails key={index} dua={item} />
+                )
+              }))
           })
         }
       </div>

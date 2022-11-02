@@ -25,9 +25,10 @@ export const StateContext = ({ children }) => {
     const [subject, setSubject] = useState();
 
     const [folder, setFolder] = useState();
+    console.log(folder)
 
     const newFolder = (e) => {
-        setFolder(e.target.value)
+        e.target.value !== '' && setFolder(e.target.value)
     }
 
 
@@ -78,8 +79,8 @@ export const StateContext = ({ children }) => {
     // console.log(subject)
 
     const handleSave = (duaData) => {
-        // setSaveFolder(folder)
-        const newData = [...subject, { name: folder, dua: duaData }]
+        // const jjj = {folder === "" ? "" : }
+        const newData = [...subject, folder === undefined ? null : { name: folder, dua: [duaData] }]
         localStorage.setItem('subject', JSON.stringify(newData))
     }
 
