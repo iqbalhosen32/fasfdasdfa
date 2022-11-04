@@ -23,19 +23,21 @@ export const StateContext = ({ children }) => {
 
     const [subject, setSubject] = useState();
 
+    // console.log(subject?.[0])
+
     const [folder, setFolder] = useState();
+
 
     const newFolder = (e) => {
         e.target.value !== '' && setFolder(e.target.value)
     }
-
-    // console.log(subject)
 
     const setMode = (e) => {
         setLanguage(e);
         localStorage.setItem('languageMode', e);
 
     };
+
 
     useEffect(() => {
 
@@ -77,9 +79,11 @@ export const StateContext = ({ children }) => {
 
     // console.log(subject)
 
-    const handleSave = (duaData) => {
+
+
+    const handleSave = (duaData, selected) => {
         // const jjj = {folder === "" ? "" : }
-        const newData = [...subject, folder === undefined ? { name: subject[0]?.name, dua: [duaData] } : { name: folder, dua: [duaData] }]
+        const newData = [...subject, folder === undefined ? { name: selected?.name, dua: [duaData] } : { name: folder, dua: [duaData] }]
         localStorage.setItem('subject', JSON.stringify(newData))
     }
 
@@ -126,6 +130,8 @@ export const StateContext = ({ children }) => {
         localStorage.setItem('showRefference', e);
     };
 
+
+
     return (
         <Context.Provider
             value={{
@@ -159,7 +165,8 @@ export const StateContext = ({ children }) => {
                 setSubject,
                 newFolder,
                 handleSave,
-
+                // selected,
+                // setSelected,
             }}
         >
             {children}

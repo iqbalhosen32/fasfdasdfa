@@ -6,7 +6,7 @@ import CreateNew from "./CreateNew";
 function PopupCont({ onClose, duaData }) {
   return (
     <div className="mx-8">
-      <SelectOption />
+      {/* <SelectOption /> */}
       <CreateNew duaData={duaData} onClose={onClose} />
       {/* <PopupBtn onClose={onClose} /> */}
     </div>

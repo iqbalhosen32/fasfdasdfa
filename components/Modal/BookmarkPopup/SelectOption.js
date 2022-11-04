@@ -4,7 +4,7 @@ import { UseStateContext } from "../../../context/StateContext";
 
 
 export default function SelectOption({ title }) {
-  const { subject, } = UseStateContext();
+  const { subject } = UseStateContext();
   const [selected, setSelected] = useState(subject[0]);
   // console.log(selected, 'dd')
   // console.log(selected)
@@ -22,7 +22,7 @@ export default function SelectOption({ title }) {
               </Listbox.Button>
               <Transition as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
                 <Listbox.Options className="z-10 absolute text-left mt-1 max-h-60 w-full overflow-auto  bg-red-100 py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                  {subject.map((person, personIdx) => (
+                  {subject?.map((person, personIdx) => (
                     <Listbox.Option
                       key={personIdx}
                       className={({ active }) =>
