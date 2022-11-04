@@ -4,8 +4,10 @@ import { UseStateContext } from "../../../context/StateContext";
 
 
 export default function SelectOption({ title }) {
-  const { subject } = UseStateContext();
+  const { subject, } = UseStateContext();
   const [selected, setSelected] = useState(subject[0]);
+  // console.log(selected, 'dd')
+  // console.log(selected)
 
   return (
     <div className="mb-3">
@@ -15,7 +17,7 @@ export default function SelectOption({ title }) {
           <Listbox value={selected} onChange={setSelected}>
             <div className="relative">
               <Listbox.Button className="relative w-full cursor-default bg-red-100 text-left focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm focus:outline-none focus:ring-1 focus:ring- px-6 py-[1.125rem] border border-solid   dark:border-none dark:focus:ring-1 dark:focus:ring-">
-                <span className="block truncate">{selected.name}</span>
+                <span className="block truncate">{selected?.name}</span>
                 <img className="absolute top-6 right-6" src="/assets/others/dropdown.svg" alt="" />
               </Listbox.Button>
               <Transition as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">

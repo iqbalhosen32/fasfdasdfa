@@ -4,7 +4,6 @@ import { UseStateContext } from "../../../context/StateContext";
 
 const MyApp = () => {
   const { subject } = UseStateContext();
-  console.log(subject)
   return (
     <Master>
       <div className="scrl h-[calc(100vh_-_100px)] 
@@ -19,7 +18,6 @@ const MyApp = () => {
           subject?.map((item, index) => {
             return (
               item.dua?.map((item, index) => {
-                console.log(item)
                 return (
                   <MemorizeDetails key={index} dua={item} />
                 )

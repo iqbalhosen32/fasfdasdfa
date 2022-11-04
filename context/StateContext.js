@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { createContext, useContext, useState, useEffect } from "react";
 import PUrls from "../dataStore/api/urls";
-import localStorageFnc from "../dataStore/functions/localStorageFnc";
 
 const Context = createContext();
 
@@ -25,12 +24,12 @@ export const StateContext = ({ children }) => {
     const [subject, setSubject] = useState();
 
     const [folder, setFolder] = useState();
-    console.log(folder)
 
     const newFolder = (e) => {
         e.target.value !== '' && setFolder(e.target.value)
     }
 
+    // console.log(subject)
 
     const setMode = (e) => {
         setLanguage(e);
@@ -80,7 +79,7 @@ export const StateContext = ({ children }) => {
 
     const handleSave = (duaData) => {
         // const jjj = {folder === "" ? "" : }
-        const newData = [...subject, folder === undefined ? null : { name: folder, dua: [duaData] }]
+        const newData = [...subject, folder === undefined ? { name: subject[0]?.name, dua: [duaData] } : { name: folder, dua: [duaData] }]
         localStorage.setItem('subject', JSON.stringify(newData))
     }
 
