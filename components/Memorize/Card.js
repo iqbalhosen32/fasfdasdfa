@@ -11,7 +11,7 @@ const Card = (props) => {
   return (
     <div className="bg-red-100 w-full max-h-max  p-5 border-[.5px] border-solid border-devider dark:bg-[#223449] dark:border-none animate-fade-in-up">
       <div className=" flex justify-between items-center">
-        <Link href="/memorize/details">
+        <Link href={`/memorize/${props.title}`}>
           <p className="cursor-pointer font-inter text-left font-semibold text-md text-[#373737] sm:text-base ">{props.title}</p>
         </Link>
         <button

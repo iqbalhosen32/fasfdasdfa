@@ -5,6 +5,7 @@ import PUrls from "../dataStore/api/urls";
 const Context = createContext();
 
 const Subject = [
+
     { name: "Favorite" },
 ];
 
@@ -23,10 +24,13 @@ export const StateContext = ({ children }) => {
 
     const [subject, setSubject] = useState();
 
-    // console.log(subject?.[0])
+    const [duaCart, setDuaCart] = useState('')
+
+
 
     const [folder, setFolder] = useState();
 
+    console.log(folder)
 
     const newFolder = (e) => {
         e.target.value !== '' && setFolder(e.target.value)
@@ -37,6 +41,28 @@ export const StateContext = ({ children }) => {
         localStorage.setItem('languageMode', e);
 
     };
+
+
+    const handleSave = (duaData, selected) => {
+        const exist = folder === undefined ? duaCart.find((item) => item.name === selected?.name) : duaCart.find((item) => item.name === folder)
+        if (exist) {
+            console.log(exist, selected)
+            const newDuaCart = duaCart.map((item) =>
+                item?.name === selected?.name ? exist.dua ? { ...exist, dua: [...exist?.dua, duaData] } : { ...exist, dua: [duaData] } : item
+            )
+            setDuaCart(newDuaCart)
+            localStorage.setItem('subject', JSON.stringify(newDuaCart))
+        } else {
+            const newDuaCart = [...duaCart, { name: folder, name: folder, dua: [duaData] }]
+            setDuaCart(newDuaCart)
+            localStorage.setItem('subject', JSON.stringify(newDuaCart))
+        }
+        // const newDuaCart = [...duaCart, { ...duaData }]
+        // setDuaCart(newDuaCart)
+        // // const jjj = {folder === "" ? "" : }
+        // const newData = [...subject, folder === undefined ? { name: selected?.name, dua: newDuaCart } : { name: folder, dua: newDuaCart }]
+        // localStorage.setItem('subject', JSON.stringify(newData))
+    }
 
 
     useEffect(() => {
@@ -71,21 +97,12 @@ export const StateContext = ({ children }) => {
         setSubject(localStorage.getItem('subject') === null ? localStorage.setItem('subject', JSON.stringify(Subject)) : JSON.parse(localStorage.getItem('subject')))
 
 
-        // localStorageFnc(Subject, "subject", setSubject);
+
+        setDuaCart(localStorage.getItem('subject') ? JSON.parse(localStorage.getItem('subject')) : [])
 
     }, [])
 
     if (!subCategory) return null;
-
-    // console.log(subject)
-
-
-
-    const handleSave = (duaData, selected) => {
-        // const jjj = {folder === "" ? "" : }
-        const newData = [...subject, folder === undefined ? { name: selected?.name, dua: [duaData] } : { name: folder, dua: [duaData] }]
-        localStorage.setItem('subject', JSON.stringify(newData))
-    }
 
 
     const setScriptMode = (e) => {
