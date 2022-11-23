@@ -44,6 +44,7 @@ export const StateContext = ({ children }) => {
 
 
     const handleSave = (duaData, selected) => {
+        // console.log(duaData, 'sasdadf')
         const exist = folder === undefined ? duaCart.find((item) => item.name === selected?.name) : duaCart.find((item) => item.name === folder)
         if (exist) {
             console.log(exist, selected)

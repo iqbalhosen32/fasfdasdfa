@@ -20,7 +20,7 @@ const MyApp = () => {
         3xl:grid-cols-3 3xl:pb-16">
           {
             subject?.map((item, index) => {
-              console.log(item)
+              // console.log(item)
               return (
                 <Card key={index} title={item.name} duaData={item.dua} selected="3" remaining="5" completed="2/3" percentage={"75%"} />
               )
